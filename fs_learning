@@ -1,0 +1,20 @@
+const fs = require('fs')
+//fs.readFile()读取指定文件中的内容
+//fs.readFile(path[, options], callback)
+// path: 代表路径，string
+// options: 可选参数，编码格式
+// callback:读取完成后，通过回调函数拿到读取的内容
+//1.以utf-8读取文件内容，打印err和datastr的值
+fs.readFile('./1.txt', 'utf8', function (err, datastr) {
+    //err 读取失败返回的内容,
+    //datastr 读取成功返回的内容,
+    //读取失败，err的值为错误的对象，datastr的值为undefined
+    //读取成功err的值为Null
+    console.log(err)
+    console.log('---------')
+    console.log(datastr)
+    if (err) {
+        return console.log('文件读取失败' + err.message)
+    }
+    console.log('文件读取成功' + datastr)
+})
