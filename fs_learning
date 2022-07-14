@@ -34,3 +34,7 @@ fs.writeFile('./444.txt', 'hello world', function (err) {
     // }
     console.log('文件写入成功')
 })
+//fs操作文件时候，如果提供的操作环境是以./或者../开头的相对路径时候，很容易出现路径问题
+//原因：代码在运行的时候，会以执行node命令所处的目录，动态拼接出被操作文件的完整路径//
+//__dirname 表示当前文件所处的目录
+console.log(__dirname)
