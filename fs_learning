@@ -38,3 +38,16 @@ fs.writeFile('./444.txt', 'hello world', function (err) {
 //原因：代码在运行的时候，会以执行node命令所处的目录，动态拼接出被操作文件的完整路径//
 //__dirname 表示当前文件所处的目录
 console.log(__dirname)
+fs.readFile(__dirname + '/444.txt', 'utf8', function (err, datastr) {
+    //err 读取失败返回的内容,
+    //datastr 读取成功返回的内容,
+    //读取失败，err的值为错误的对象，datastr的值为undefined
+    //读取成功err的值为Null
+    console.log(err)
+    console.log('---------')
+    console.log(datastr)
+    if (err) {
+        return console.log('文件读取失败' + err.message)
+    }
+    console.log('文件读取成功' + datastr)
+})
