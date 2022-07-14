@@ -51,3 +51,6 @@ fs.readFile(__dirname + '/444.txt', 'utf8', function (err, datastr) {
     }
     console.log('文件读取成功' + datastr)
 })
+//注意事项
+// fs.writeFile()方法只能用来创建文件，不能用来创建路径
+// 重复调用fs.writeFile()方法写入同一个文件，新写入的内容会覆盖之前的内容
