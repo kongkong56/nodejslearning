@@ -1,0 +1,59 @@
+//模块化定义
+//模块化是指解决一个复杂问题时，自顶向下逐层把系统划分成若干个模块的过程。对于整个系统来说，模块是可组合、分解和更换的单元
+//编程中的模块化，就是遵守固定的规则，把一个大文件拆分成独立并且相互依赖的多个小模块
+//模块化拆分的好处：1，提高代码复用性 2.提高代码可维护行 3.可以实现按需加载
+//模块化规范就是对代码进行模块化拆分与组合时，需要遵守的那些规则。大家都遵守同样的模块化规范写代码，降低沟通成本，方便各个模块之间的相互调用。
+
+
+
+//nodejs模块的分来：内置模块，自定义模块，第三方模块
+//加载模块，使用require()方法就可以。使用require时，会执行加载的代码
+//const fs = require('fs') 内置模块加载
+//const custom = require('./custom.js') 自定义模块加载
+//const moment=require('moment') 第三方模块加载
+
+
+//模块作用域
+//在自定义模块中定义的变量、方法等，只能在当前模块中被访问，这种级别的访问限制，叫做模块作用域
+//模块作用域的好处：防止全局变量污染的问题
+
+
+
+//module对象：module对象存储当前模块有关的信息
+
+// console.log(module)
+
+// Module {
+//     id: '.',
+//     path: 'D:\\Coding\\jiahao\\nodejslearning',
+//     exports: {},
+//     filename: 'D:\\Coding\\jiahao\\nodejslearning\\module_learning',
+//     loaded: false,
+//     children: [],
+//     paths: [
+//         'D:\\Coding\\jiahao\\nodejslearning\\node_modules',
+//         'D:\\Coding\\jiahao\\node_modules',
+//         'D:\\Coding\\node_modules',
+//         'D:\\node_modules'
+//     ]
+// }
+
+//module.exports对象，在自定义模块总，使用exports对象，将模块内的成员共享出去，供外界使用。外界使用require()方法导入自定义模块时，
+//得到的就是module.exports所指向的对象
+
+const zdyModule = require('./自定义module')
+//在一个自定义的模块中，默认情况中，module.exports是{}，在其他文件中引用时，默认打印出来的也是{}
+
+console.log(zdyModule)
+//使用require()方法导入模块时，导入结果永远以module.exports指向的对象为准
+//exports对象和module.exports指向同一对象，二者可代替对方
+console.log(exports == module.exports)
+
+
+
+//nodejs中的模块化规范
+//nodejs遵循commonjs模块化规范，commonjs规定了模块特性和各模块之间如何相互依赖
+//commonjs规定：
+//每个模块内部，module变量代表当前模块
+//module变量是一个对象，他的exports属性(module.exports)是对外的接口
+//加载某个模块，其实是加载该模块的module.exports属性。require()方法用于加载模块
